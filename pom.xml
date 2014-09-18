@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.encore.hermes</groupId>
+		<artifactId>ec-hermes-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.encore.hermes</groupId>
+	<artifactId>ec-hermes-drupal</artifactId>
+	<packaging>war</packaging>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>ec-hermes-drupal</name>
+
+	<properties>
+		<app.name>hermes-drupal</app.name>
+		<tomcat.server.username>larinde</tomcat.server.username>
+		<tomcat.server.password>larinde</tomcat.server.password>
+		<tomcat.server.uri>http://localhost:8080/manager/text</tomcat.server.uri>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.tuckey</groupId>
+			<artifactId>urlrewritefilter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.caucho</groupId>
+			<artifactId>quercus</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${app.name}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<url>${tomcat.server.uri}</url>
+					<username>${tomcat.server.username}</username>
+					<password>${tomcat.server.password}</password>
+					<path>/${app.name}</path>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+</project>
